@@ -83,13 +83,13 @@ st.markdown("""
 # Data persistence functions
 def save_books():
     """Save books to JSON file"""
-    with open('d:/personal_library_manager/books_data.json', 'w') as f:
+    with open('books_data.json', 'w') as f:
         json.dump(st.session_state.books, f)
     
 def load_books():
     """Load books from JSON file"""
     try:
-        with open('d:/personal_library_manager/books_data.json', 'r') as f:
+        with open('books_data.json', 'r') as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return []
@@ -325,7 +325,7 @@ elif nav == "Settings":
     
     if st.button("Export Library as CSV"):
         df = pd.DataFrame(st.session_state.books)
-        df.to_csv('d:/personal_library_manager/library_export.csv', index=False)
+        df.to_csv('library_export.csv', index=False)
         st.success("Library exported to CSV!")
     
     if st.button("Clear Library"):
